@@ -1,0 +1,2 @@
+{%- assign body = include.essay.content | strip -%}
+{%- if body == "" -%}{{ site.substack_url }}/p/{{ include.essay.substack }}{%- else -%}{{ include.essay.url | relative_url }}{%- endif -%}

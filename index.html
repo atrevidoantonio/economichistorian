@@ -1,0 +1,71 @@
+---
+layout: default
+---
+{% assign essays = site.essays | sort: "date" | reverse %}
+{% assign lead = essays | where: "featured", true | first %}
+{% unless lead %}{% assign lead = essays | first %}{% endunless %}
+{% assign rest = essays | where_exp: "essay", "essay.url != lead.url" %}
+
+<section class="cover">
+  <div class="cover-inner">
+    <div class="cover-lead">
+      <p class="label">{{ lead.section }}</p>
+      <h1><a href="{% include essay-link.html essay=lead %}">{{ lead.title }}</a></h1>
+      {% if lead.subtitle %}<p class="standfirst">{{ lead.subtitle }}</p>{% endif %}
+      <p class="byline">{% if lead.author %}{{ lead.author }}, {% endif %}{{ lead.date | date: "%B %Y" }}</p>
+    </div>
+    <div class="cover-contents">
+      <p class="label">Also in the magazine</p>
+      <ul>
+        {% for essay in rest limit: 5 %}
+        <li>
+          <a href="{% include essay-link.html essay=essay %}">{{ essay.title }}</a>
+          {% if essay.author %}<span>{{ essay.author }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <h2>Recent essays</h2>
+  <div class="essay-grid">
+    {% for essay in rest offset: 5 limit: 8 %}
+    <article class="essay-card">
+      <p class="label">{{ essay.section }}</p>
+      <h3><a href="{% include essay-link.html essay=essay %}">{{ essay.title }}</a></h3>
+      {% if essay.subtitle %}<p class="summary">{{ essay.subtitle }}</p>{% endif %}
+      <p class="byline">{% if essay.author %}{{ essay.author }}, {% endif %}{{ essay.date | date: "%B %Y" }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="more"><a href="{{ '/essays/' | relative_url }}">All essays</a></p>
+</section>
+
+<section class="band tinted">
+  <div class="band-inner">
+    <h2>By subject</h2>
+    <div class="subject-grid">
+      {% for section in site.data.sections %}
+      {% assign in_section = essays | where: "section", section %}
+      {% if in_section.size > 0 %}
+      <div class="subject">
+        <h3><a href="{{ '/essays/' | relative_url }}?section={{ section | url_encode }}">{{ section }}</a></h3>
+        <ul>
+          {% for essay in in_section limit: 4 %}
+          <li><a href="{% include essay-link.html essay=essay %}">{{ essay.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band subscribe">
+  <p class="statement">{{ site.tagline }}</p>
+  <p><a class="button" href="{{ site.substack_url }}/subscribe">Subscribe</a></p>
+  <p class="byline">Free by email. Over 2,000 subscribers.</p>
+</section>

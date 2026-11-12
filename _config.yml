@@ -1,0 +1,26 @@
+title: The Economic Historian
+tagline: Exploring how the history of money, markets, and economic ideas shapes our world.
+description: A magazine of economic history and ideas.
+url: "https://atrevidoantonio.github.io"
+baseurl: "/economichistorian"
+substack_url: https://www.economic-historian.com
+editor_email: editor@economic-historian.com
+editors:
+  - Anthony Perez Eisenbarth
+  - Johnny Fulfer
+
+collections:
+  essays:
+    output: true
+    permalink: /essays/:name/
+
+defaults:
+  - scope:
+      type: essays
+    values:
+      layout: essay
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

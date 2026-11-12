@@ -1,0 +1,193 @@
+:root {
+  --brick: #C4483C;
+  --maroon: #8F2D25;
+  --blush: #F4E7E0;
+  --ink: #1A1A1A;
+  --gray: #6B6B6B;
+  --paper: #FFFFFF;
+  --serif: "EB Garamond", Garamond, Georgia, serif;
+  --sans: "Libre Franklin", Arial, sans-serif;
+  --page: 1180px;
+  --gutter: clamp(20px, 5vw, 56px);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+h1, h2, h3, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+h1, h2, h3 { font-weight: 500; letter-spacing: -0.015em; text-wrap: balance; }
+
+.label, .byline, nav, .filters, time {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.label { font-weight: 600; color: var(--brick); }
+.byline { color: var(--gray); }
+
+.button {
+  display: inline-block;
+  padding: 11px 22px;
+  background: var(--brick);
+  color: #FFFFFF;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+}
+.button:hover { background: var(--maroon); text-decoration: none; }
+
+.site-header {
+  max-width: calc(var(--page) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 22px var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+.wordmark { display: flex; align-items: center; gap: 12px; font-size: 26px; font-weight: 500; letter-spacing: -0.01em; }
+.wordmark:hover { text-decoration: none; }
+.wordmark img { display: block; }
+.site-header nav { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; font-size: 14px; font-weight: 500; }
+
+.cover { background: var(--brick); color: #FFFFFF; }
+.cover-inner {
+  max-width: calc(var(--page) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: clamp(56px, 9vw, 120px) var(--gutter) clamp(56px, 8vw, 104px);
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: 56px 96px;
+  align-items: end;
+}
+.cover .label { color: #FFFFFF; opacity: 0.85; }
+.cover .byline { color: #FFFFFF; opacity: 0.85; }
+.cover h1 { margin-top: 20px; font-size: clamp(48px, 7.4vw, 104px); line-height: 0.96; letter-spacing: -0.025em; }
+.cover .standfirst { color: #FFFFFF; margin-top: 28px; max-width: 26em; font-size: clamp(22px, 2.2vw, 28px); font-style: italic; line-height: 1.3; }
+.cover .byline { margin-top: 28px; }
+.cover-contents ul { margin-top: 20px; display: grid; gap: 20px; }
+.cover-contents a { display: block; font-size: 24px; line-height: 1.2; }
+.cover-contents span { display: block; margin-top: 4px; font-family: var(--sans); font-size: 13px; opacity: 0.85; }
+
+.band {
+  max-width: calc(var(--page) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 104px) var(--gutter);
+}
+.band > h2, .band-inner > h2 { font-size: clamp(32px, 3.6vw, 44px); line-height: 1.1; }
+
+.essay-grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 64px 56px;
+}
+.essay-card h3 { margin-top: 10px; font-size: 30px; line-height: 1.12; }
+.summary { margin-top: 10px; color: #3A3A3A; font-size: 19px; line-height: 1.35; }
+.essay-card .byline { margin-top: 14px; }
+.essay-card:first-child { grid-column: span 2; }
+.essay-card:first-child h3 { font-size: clamp(36px, 4.4vw, 56px); line-height: 1.04; letter-spacing: -0.02em; }
+.essay-card:first-child .summary { font-size: 22px; max-width: 28em; }
+.more { margin-top: 56px; font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--brick); }
+
+.band.tinted { max-width: none; padding-left: 0; padding-right: 0; background: var(--blush); }
+.band-inner { max-width: calc(var(--page) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+.subject-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 48px 40px; }
+.subject h3 { font-size: 24px; line-height: 1.15; color: var(--maroon); }
+.subject ul { margin-top: 16px; display: grid; gap: 12px; }
+.subject li { font-size: 18px; line-height: 1.3; }
+
+.subscribe { text-align: center; }
+.statement { max-width: 20em; margin: 0 auto 36px; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; letter-spacing: -0.015em; text-wrap: balance; }
+.subscribe .byline { margin-top: 18px; }
+
+.archive h1, .prose-page h1 { font-size: clamp(48px, 6vw, 80px); line-height: 1; letter-spacing: -0.025em; }
+.filters { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--blush);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.filters button[aria-pressed="true"] { background: var(--brick); color: #FFFFFF; }
+.archive-year { margin-top: 72px; display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 16px 24px; }
+.archive-year h2 { font-size: 44px; line-height: 1; color: var(--brick); }
+.archive-year ul { display: grid; gap: 30px; }
+.archive-year li { display: grid; grid-template-columns: 72px minmax(0, 1fr) 190px; gap: 8px 24px; align-items: baseline; }
+.archive-year time { color: var(--gray); }
+.archive-title { font-size: 26px; line-height: 1.15; font-weight: 500; letter-spacing: -0.01em; }
+.archive-year .summary { margin-top: 4px; }
+.archive-year .byline { text-align: right; }
+[hidden] { display: none !important; }
+
+.essay, .prose-page { max-width: calc(720px + 2 * var(--gutter)); margin: 0 auto; padding: clamp(48px, 7vw, 96px) var(--gutter); }
+.essay-header h1 { margin-top: 14px; font-size: clamp(42px, 6vw, 72px); line-height: 1; letter-spacing: -0.025em; }
+.essay-header .standfirst, .prose-page .standfirst { margin-top: 22px; font-size: clamp(22px, 2.4vw, 28px); font-style: italic; line-height: 1.3; color: #3A3A3A; }
+.essay-header .byline { margin-top: 22px; }
+.prose { margin-top: 48px; font-size: 21px; line-height: 1.55; }
+.prose p + p { margin-top: 1em; }
+.prose h2 { margin: 1.8em 0 0.5em; font-size: 32px; line-height: 1.15; }
+.prose h3 { margin: 1.6em 0 0.4em; font-size: 25px; line-height: 1.2; }
+.prose a { color: var(--brick); text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+.prose a.button { color: #FFFFFF; text-decoration: none; }
+.prose ul, .prose ol { margin: 1em 0; padding-left: 1.2em; list-style: revert; }
+.prose blockquote { margin: 1.4em 0; padding-left: 1.4em; font-style: italic; color: #3A3A3A; }
+.prose img { max-width: 100%; height: auto; display: block; margin: 2em auto; }
+.prose figcaption, .prose .footnotes { font-family: var(--sans); font-size: 14px; line-height: 1.5; color: var(--gray); }
+.prose sup { font-family: var(--sans); font-size: 0.6em; line-height: 0; }
+.essay-body > p:first-of-type::first-letter { float: left; padding: 0.06em 0.08em 0 0; font-size: 3.6em; line-height: 0.8; color: var(--brick); }
+
+.site-footer { background: var(--ink); color: #FFFFFF; }
+.footer-inner {
+  max-width: calc(var(--page) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 72px var(--gutter);
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px 56px;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.footer-title { font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 12px; }
+.footer-inner > div:first-child p:last-child { max-width: 24em; opacity: 0.75; line-height: 1.5; }
+.site-footer .label { color: #E99386; }
+
+@media (max-width: 900px) {
+  .cover-inner { grid-template-columns: 1fr; }
+  .essay-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .archive-year { grid-template-columns: 1fr; }
+  .archive-year li { grid-template-columns: 64px minmax(0, 1fr); }
+  .archive-year .byline { grid-column: 2; text-align: left; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-inner > div:first-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 19px; }
+  .wordmark { font-size: 22px; }
+  .essay-grid { grid-template-columns: 1fr; gap: 44px; }
+  .essay-card:first-child { grid-column: auto; }
+  .footer-inner { grid-template-columns: 1fr; }
+}

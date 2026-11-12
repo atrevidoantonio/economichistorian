@@ -1,0 +1,19 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-title">The Economic Historian</p>
+      <p>{{ site.tagline }}</p>
+    </div>
+    <div>
+      <p class="label">Editors</p>
+      {% for editor in site.editors %}<p>{{ editor }}</p>{% endfor %}
+      <p><a href="mailto:{{ site.editor_email }}">{{ site.editor_email }}</a></p>
+    </div>
+    <div>
+      <p class="label">Read</p>
+      <p><a href="{{ '/essays/' | relative_url }}">All essays</a></p>
+      <p><a href="{{ '/submissions/' | relative_url }}">Write for us</a></p>
+      <p><a href="{{ site.substack_url }}/subscribe">Subscribe on Substack</a></p>
+    </div>
+  </div>
+</footer>

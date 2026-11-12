@@ -1,0 +1,47 @@
+---
+layout: default
+title: Essays
+permalink: /essays/
+---
+{% assign essays = site.essays | sort: "date" | reverse %}
+<section class="band archive">
+  <h1>Essays</h1>
+  <div class="filters" role="group" aria-label="Filter by subject">
+    <button type="button" data-section="" aria-pressed="true">All</button>
+    {% for section in site.data.sections %}
+    <button type="button" data-section="{{ section }}" aria-pressed="false">{{ section }}</button>
+    {% endfor %}
+  </div>
+  {% assign years = essays | group_by_exp: "essay", "essay.date | date: '%Y'" %}
+  {% for year in years %}
+  <div class="archive-year">
+    <h2>{{ year.name }}</h2>
+    <ul>
+      {% for essay in year.items %}
+      <li data-section="{{ essay.section }}">
+        <time datetime="{{ essay.date | date: '%Y-%m-%d' }}">{{ essay.date | date: "%-d %b" }}</time>
+        <div>
+          <a class="archive-title" href="{% include essay-link.html essay=essay %}">{{ essay.title }}</a>
+          {% if essay.subtitle %}<p class="summary">{{ essay.subtitle }}</p>{% endif %}
+        </div>
+        <p class="byline">{{ essay.author }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</section>
+<script>
+const buttons = document.querySelectorAll(".filters button");
+const rows = document.querySelectorAll(".archive-year li");
+const show = (section) => {
+  buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.section === section)));
+  rows.forEach((row) => { row.hidden = section !== "" && row.dataset.section !== section; });
+  document.querySelectorAll(".archive-year").forEach((year) => {
+    year.hidden = !year.querySelector("li:not([hidden])");
+  });
+};
+buttons.forEach((button) => button.addEventListener("click", () => show(button.dataset.section)));
+const requested = new URLSearchParams(location.search).get("section");
+if (requested && [...buttons].some((button) => button.dataset.section === requested)) show(requested);
+</script>

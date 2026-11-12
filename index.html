@@ -12,7 +12,8 @@ layout: default
       <p class="label">{{ lead.section }}</p>
       <h1><a href="{% include essay-link.html essay=lead %}">{{ lead.title }}</a></h1>
       {% if lead.subtitle %}<p class="standfirst">{{ lead.subtitle }}</p>{% endif %}
-      <p class="byline">{% if lead.author %}{{ lead.author }}, {% endif %}{{ lead.date | date: "%B %Y" }}</p>
+      {% capture byline %}{% include byline.html essay=lead %}{% endcapture %}
+      <p class="byline">{% if byline != "" %}{{ byline }}, {% endif %}{{ lead.date | date: "%B %Y" }}</p>
     </div>
     <div class="cover-contents">
       <p class="label">Also in the magazine</p>
@@ -20,7 +21,7 @@ layout: default
         {% for essay in rest limit: 5 %}
         <li>
           <a href="{% include essay-link.html essay=essay %}">{{ essay.title }}</a>
-          {% if essay.author %}<span>{{ essay.author }}</span>{% endif %}
+          {% capture byline %}{% include byline.html essay=essay %}{% endcapture %}{% if byline != "" %}<span>{{ byline }}</span>{% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -36,7 +37,8 @@ layout: default
       <p class="label">{{ essay.section }}</p>
       <h3><a href="{% include essay-link.html essay=essay %}">{{ essay.title }}</a></h3>
       {% if essay.subtitle %}<p class="summary">{{ essay.subtitle }}</p>{% endif %}
-      <p class="byline">{% if essay.author %}{{ essay.author }}, {% endif %}{{ essay.date | date: "%B %Y" }}</p>
+      {% capture byline %}{% include byline.html essay=essay %}{% endcapture %}
+      <p class="byline">{% if byline != "" %}{{ byline }}, {% endif %}{{ essay.date | date: "%B %Y" }}</p>
     </article>
     {% endfor %}
   </div>
@@ -67,5 +69,4 @@ layout: default
 <section class="band subscribe">
   <p class="statement">{{ site.tagline }}</p>
   <p><a class="button" href="{{ site.substack_url }}/subscribe">Subscribe</a></p>
-  <p class="byline">Free by email. Over 2,000 subscribers.</p>
 </section>

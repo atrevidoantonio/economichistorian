@@ -1,0 +1,4 @@
+{%- assign byline_essay = include.essay -%}
+{%- if byline_essay.format == "Interview" -%}Interview with {{ byline_essay.author }}{% if byline_essay.interviewer %} by {{ byline_essay.interviewer }}{% endif %}
+{%- elsif byline_essay.format == "Review" -%}Review{% if byline_essay.author %} by {{ byline_essay.author }}{% endif %}
+{%- else -%}{{ byline_essay.author }}{%- endif -%}

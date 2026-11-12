@@ -24,7 +24,7 @@ permalink: /essays/
           <a class="archive-title" href="{% include essay-link.html essay=essay %}">{{ essay.title }}</a>
           {% if essay.subtitle %}<p class="summary">{{ essay.subtitle }}</p>{% endif %}
         </div>
-        <p class="byline">{{ essay.author }}</p>
+        <p class="byline">{% include byline.html essay=essay %}</p>
       </li>
       {% endfor %}
     </ul>

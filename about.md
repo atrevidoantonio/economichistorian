@@ -2,15 +2,15 @@
 layout: page
 title: About
 permalink: /about/
-subtitle: A magazine of economic history and ideas.
+subtitle: A magazine of economic history and the history of economic ideas.
 ---
-The Economic Historian publishes essays on the history of money, markets, and economic ideas, and on how that history shapes the present.
+The Economic Historian is a journal of ideas. It publishes work that analyzes current events, world politics, the global economy, state power, historical events and ongoing historical processes from a range of disciplines. In its intellectual range and coverage, it draws on the history of Hobsbawm, E. P. Thompson, Abrahamian and Du Bois, and on the political economy of Marx, Polanyi, Minsky and Brenner. It also engages the history of capitalism of Sven Beckert, Caitlin Rosenthal and Walter Johnson, and the economic history of Robert Fogel, Gavin Wright and Paul Rhode.
 
-We publish historians, economists, and writers from outside the academy. The register is the essay, not the journal article: argument first, written for a general reader, with the scholarship underneath it.
+
 
 ## Editors
 
-{% for editor in site.editors %}{{ editor }}  
+{% for editor in site.editors %}{{ editor }}<br>
 {% endfor %}
 
-Write to the editors at [{{ site.editor_email }}](mailto:{{ site.editor_email }}).
+Correspondence and submissions should be sent to <a href="mailto:{{ site.editor_email }}">{{ site.editor_email }}</a>. See the <a href="{{ '/submissions/' | relative_url }}">submission guidelines</a> before sending work.
